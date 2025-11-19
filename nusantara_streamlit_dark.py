@@ -5,7 +5,7 @@ from datetime import datetime
 # ===== 1. KONFIGURASI HALAMAN =====
 st.set_page_config(
     page_title="Nusantara Clarity",
-    page_icon="🌿",
+    page_icon="🐦‍🔥",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -128,7 +128,7 @@ active_module = selected.strip()
 # ===== 5. HEADER =====
 col_h1, col_h2 = st.columns([3, 1])
 with col_h1:
-    st.markdown('<h1 style="color:white; margin-bottom:0;">Dashboard Eksekutif</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="color:white; margin-bottom:0;">Dashboard Eksekutif PT. Profitera Team</h1>', unsafe_allow_html=True)
     st.markdown(f'<p style="color:#64748b;">Terakhir diperbarui: {datetime.now().strftime("%d %B %Y, %H:%M")} WIB</p>', unsafe_allow_html=True)
 
 with col_h2:
@@ -136,7 +136,7 @@ with col_h2:
         <div style="display:flex; justify-content:flex-end; align-items:center; gap:15px; height: 100%;">
             <div style="text-align:right; line-height:1.2;">
                 <div style="color:white; font-weight:600; font-size:14px;">Admin</div>
-                <div style="color:#10b981; font-size:11px;">Super User</div>
+                <div style="color:#10b981; font-size:11px;">Profitera</div>
             </div>
             <div style="width:40px; height:40px; background:linear-gradient(135deg, #10b981, #059669); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);">IN</div>
         </div>
@@ -183,12 +183,12 @@ if active_module == "Overview":
     col_left, col_right = st.columns([2, 1])
 
     with col_left:
-        st.markdown("### 🌍 Peta Risiko Regional")
+        st.markdown("### ✵ Peta Risiko Regional")
         df = pd.DataFrame(risk_data)
         st.dataframe(df, use_container_width=True, hide_index=True)
 
     with col_right:
-        st.markdown("### Rekomendasi Investasi")
+        st.markdown("### 🗐 Rekomendasi Investasi")
         for inv in investment_list:
             border_color = "#10b981" if inv['status'] == "Prioritas" else "#3b82f6"
             badge_bg = "rgba(16,185,129,0.2)" if inv['status'] == "Prioritas" else "rgba(59,130,246,0.2)"
