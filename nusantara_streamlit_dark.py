@@ -10,8 +10,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ===== 2. DATA LENGKAP (DIKEMBALIKAN) =====
-# Kita taruh data di sini agar mudah diedit
+# ===== 2. DATA LENGKAP =====
 risk_data = [
     {"Lokasi": "Jakarta Utara", "Tingkat Risiko": "Tinggi", "Bahaya": "Banjir Rob", "Dampak": "Rp 12.5 M", "Probabilitas": "75%"},
     {"Lokasi": "Surabaya Barat", "Tingkat Risiko": "Sedang", "Bahaya": "Kekeringan", "Dampak": "Rp 8.3 M", "Probabilitas": "45%"},
@@ -86,7 +85,6 @@ st.markdown("""
         border: 1px solid; display: flex; align-items: center; gap: 12px; font-size: 14px;
     }
     
-    /* Warna Alert Khusus Dark Mode */
     .notif-warning { border-color: #b45309; background: rgba(245, 158, 11, 0.1); color: #fbbf24; }
     .notif-info { border-color: #1d4ed8; background: rgba(59, 130, 246, 0.1); color: #60a5fa; }
     .notif-success { border-color: #065f46; background: rgba(16, 185, 129, 0.1); color: #34d399; }
@@ -96,6 +94,7 @@ st.markdown("""
 
 # ===== 4. SIDEBAR =====
 with st.sidebar:
+    # Header
     st.markdown("""
         <div style="padding: 20px 10px; margin-bottom: 20px; color: white; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
             <div style="background: #10b981; padding: 8px; border-radius: 8px;">
@@ -108,14 +107,18 @@ with st.sidebar:
         </div>
     """, unsafe_allow_html=True)
 
+    # Menu
     selected = st.radio(
         "Menu",
         ["  Overview", "  Kuantifikasi Risiko", "  Optimalisasi Investasi", "  Pemantauan Geografis", "  Pembiayaan Hijau", "  Pelaporan"],
         label_visibility="collapsed"
     )
 
+    # --- PERBAIKAN FOOTER DISINI ---
+    # Kita gunakan margin-top agar footer terdorong ke bawah secara natural
+    # Bukan position: absolute yang bikin menimpa
     st.markdown("""
-        <div style="position: absolute; bottom: 20px; left: 20px; color: #64748b; font-size: 11px;">
+        <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #64748b; font-size: 11px;">
             Server: <span style="color:#10b981">● Online</span><br>v2.5 (Full Data)
         </div>
     """, unsafe_allow_html=True)
@@ -144,9 +147,9 @@ st.markdown("---")
 # ===== 6. KONTEN UTAMA =====
 if active_module == "Overview":
 
-    # -- A. ALERTS (LOOPING DARI DATA) --
+    # -- ALERTS --
     for alert in alert_list:
-        css_class = f"notif-{alert['type']}" # notif-warning, notif-info, dst
+        css_class = f"notif-{alert['type']}"
         st.markdown(f"""
             <div class="notification {css_class}">
                 <span>{alert['icon']}</span> {alert['text']}
@@ -155,10 +158,9 @@ if active_module == "Overview":
 
     st.markdown("<br>", unsafe_allow_html=True)
 
-    # -- B. KPI CARDS (TETAP 4) --
+    # -- KPI CARDS --
     c1, c2, c3, c4 = st.columns(4)
     
-    # Fungsi helper untuk bikin kartu biar kodenya rapi
     def kpi_card(icon, color_bg, color_text, delta, title, value, sub):
         st.markdown(f"""
         <div class="card">
@@ -177,21 +179,17 @@ if active_module == "Overview":
     with c3: kpi_card("💵", "rgba(59, 130, 246, 0.2)", "#60a5fa", "OPEN", "Dana Hijau", "Rp 15 M", "Siap Cair")
     with c4: kpi_card("🛡️", "rgba(168, 85, 247, 0.2)", "#c084fc", "100%", "Kepatuhan", "TCFD", "Audit Ready")
 
-    # -- C. TABEL & INVESTASI (LOOPING DARI DATA) --
+    # -- TABEL & INVESTASI --
     col_left, col_right = st.columns([2, 1])
 
     with col_left:
         st.markdown("### 🌍 Peta Risiko Regional")
-        # Menampilkan Tabel Lengkap
         df = pd.DataFrame(risk_data)
         st.dataframe(df, use_container_width=True, hide_index=True)
 
     with col_right:
         st.markdown("### 🚀 Rekomendasi Investasi")
-        
-        # Looping data investasi agar semua muncul
         for inv in investment_list:
-            # Tentukan warna berdasarkan status
             border_color = "#10b981" if inv['status'] == "Prioritas" else "#3b82f6"
             badge_bg = "rgba(16,185,129,0.2)" if inv['status'] == "Prioritas" else "rgba(59,130,246,0.2)"
             badge_text = "#34d399" if inv['status'] == "Prioritas" else "#60a5fa"
@@ -212,7 +210,6 @@ if active_module == "Overview":
             """, unsafe_allow_html=True)
 
 else:
-    # Halaman Placeholder
     st.markdown(f"""
     <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:400px; text-align:center; border: 2px dashed #334155; border-radius: 20px;">
         <div style="font-size:60px; margin-bottom:20px; filter: grayscale(100%); opacity: 0.5;">🚧</div>
