@@ -5,17 +5,17 @@ from datetime import datetime
 # ===== 1. KONFIGURASI HALAMAN =====
 st.set_page_config(
     page_title="Nusantara Clarity",
-    page_icon="🐦‍🔥",
+    page_icon="♻️",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # ===== 2. DATA LENGKAP =====
 risk_data = [
-    {"Lokasi": "Jakarta Utara", "Tingkat Risiko": "Tinggi", "Bahaya": "Banjir Rob", "Dampak": "Rp 12.5 M", "Probabilitas": "75%"},
+    {"Lokasi": "Jakarta Utara", "Tingkat Risiko": "Tinggi", "Bahaya": "Banjir", "Dampak": "Rp 12.5 M", "Probabilitas": "75%"},
     {"Lokasi": "Surabaya", "Tingkat Risiko": "Sedang", "Bahaya": "Kekeringan", "Dampak": "Rp 8.3 M", "Probabilitas": "45%"},
     {"Lokasi": "Malang", "Tingkat Risiko": "Rendah", "Bahaya": "Longsor", "Dampak": "Rp 3.2 M", "Probabilitas": "20%"},
-    {"Lokasi": "Bali", "Tingkat Risiko": "Tinggi", "Bahaya": "Gelombang", "Dampak": "Rp 9.1 M", "Probabilitas": "60%"},
+    {"Lokasi": "Denpasar", "Tingkat Risiko": "Tinggi", "Bahaya": "Banjir", "Dampak": "Rp 9.1 M", "Probabilitas": "60%"},
 ]
 
 investment_list = [
