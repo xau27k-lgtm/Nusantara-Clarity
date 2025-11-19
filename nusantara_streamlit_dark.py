@@ -5,7 +5,7 @@ from datetime import datetime
 # ===== 1. KONFIGURASI HALAMAN =====
 st.set_page_config(
     page_title="Nusantara Clarity",
-    page_icon="♻️",
+    page_icon="🌿",
     layout="wide",
     initial_sidebar_state="expanded"
 )
