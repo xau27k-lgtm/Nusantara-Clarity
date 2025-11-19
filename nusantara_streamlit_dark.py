@@ -13,9 +13,9 @@ st.set_page_config(
 # ===== 2. DATA LENGKAP =====
 risk_data = [
     {"Lokasi": "Jakarta Utara", "Tingkat Risiko": "Tinggi", "Bahaya": "Banjir Rob", "Dampak": "Rp 12.5 M", "Probabilitas": "75%"},
-    {"Lokasi": "Surabaya Barat", "Tingkat Risiko": "Sedang", "Bahaya": "Kekeringan", "Dampak": "Rp 8.3 M", "Probabilitas": "45%"},
-    {"Lokasi": "Bandung Raya", "Tingkat Risiko": "Rendah", "Bahaya": "Longsor", "Dampak": "Rp 3.2 M", "Probabilitas": "20%"},
-    {"Lokasi": "Semarang", "Tingkat Risiko": "Tinggi", "Bahaya": "Gelombang", "Dampak": "Rp 9.1 M", "Probabilitas": "60%"},
+    {"Lokasi": "Surabaya", "Tingkat Risiko": "Sedang", "Bahaya": "Kekeringan", "Dampak": "Rp 8.3 M", "Probabilitas": "45%"},
+    {"Lokasi": "Malang", "Tingkat Risiko": "Rendah", "Bahaya": "Longsor", "Dampak": "Rp 3.2 M", "Probabilitas": "20%"},
+    {"Lokasi": "Bali", "Tingkat Risiko": "Tinggi", "Bahaya": "Gelombang", "Dampak": "Rp 9.1 M", "Probabilitas": "60%"},
 ]
 
 investment_list = [
@@ -25,9 +25,9 @@ investment_list = [
 ]
 
 alert_list = [
-    {"type": "warning", "icon": "⚠️", "text": "<b>Peringatan:</b> Prediksi curah hujan ekstrem area Jakarta (48 Jam)"},
+    {"type": "warning", "icon": "⚠️", "text": "<b>Peringatan:</b> Prediksi curah hujan ekstrem area Malang (48 Jam)"},
     {"type": "info", "icon": "ℹ️", "text": "<b>Info:</b> Data satelit Sentinel-2 baru saja diupdate"},
-    {"type": "success", "icon": "✅", "text": "<b>Sukses:</b> Laporan TCFD Q3 2024 berhasil dibuat otomatis"},
+    {"type": "success", "icon": "✅", "text": "<b>Sukses:</b> Laporan TCFD Q4 2025 berhasil dibuat otomatis"},
 ]
 
 # ===== 3. CSS DARK MODE PREMIUM =====
@@ -188,7 +188,7 @@ if active_module == "Overview":
         st.dataframe(df, use_container_width=True, hide_index=True)
 
     with col_right:
-        st.markdown("### 🚀 Rekomendasi Investasi")
+        st.markdown("### Rekomendasi Investasi")
         for inv in investment_list:
             border_color = "#10b981" if inv['status'] == "Prioritas" else "#3b82f6"
             badge_bg = "rgba(16,185,129,0.2)" if inv['status'] == "Prioritas" else "rgba(59,130,246,0.2)"
